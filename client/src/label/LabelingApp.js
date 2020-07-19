@@ -219,6 +219,8 @@ class LabelingApp extends Component {
       labels,
       imageUrl,
       reference,
+      onNext,
+      onPrev,
       onBack,
       onSkip,
       onSubmit,
@@ -243,6 +245,8 @@ class LabelingApp extends Component {
       onBack,
       onSkip,
       onSubmit,
+      onNext,
+      onPrev,
       models,
       makePrediction,
     };

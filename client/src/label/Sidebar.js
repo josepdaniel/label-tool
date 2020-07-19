@@ -26,6 +26,8 @@ export default class Sidebar extends PureComponent {
       filter,
       style,
       openHotkeys,
+      onNext,
+      onPrev,
       onBack,
       onSkip,
       onSubmit,
@@ -80,6 +82,13 @@ export default class Sidebar extends PureComponent {
           )}
           <Hotkeys keyName="esc" onKeyDown={() => onSelect(null)} />
         </List>
+
+        <div style={{ flex: '0 0 auto', display: 'flex' }}>
+          <span style={{ flex: 1 }} />
+          <Button onClick={onPrev}>Prev</Button>
+          <Button onClick={onNext}>Next</Button>
+        </div>
+
         <div style={{ flex: '0 0 auto', display: 'flex' }}>
           <Button onClick={onBack}>Back</Button>
           <span style={{ flex: 1 }} />

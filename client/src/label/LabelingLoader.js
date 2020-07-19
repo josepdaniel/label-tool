@@ -127,6 +127,26 @@ export default class LabelingLoader extends Component {
         this.markComplete();
         history.push(`/label/${project.id}/`);
       },
+      onNext: () => {
+        // Hacky as fuck
+        let arr = window.location.href.split('/');
+        let x = parseInt(arr[5]) + 1;
+        let newarr = arr
+          .splice(0, 5)
+          .concat([x])
+          .join('/');
+        window.location.replace(newarr);
+      },
+      onPrev: () => {
+        // Hacky as fuck
+        let arr = window.location.href.split('/');
+        let x = parseInt(arr[5]) - 1;
+        let newarr = arr
+          .splice(0, 5)
+          .concat([x])
+          .join('/');
+        window.location.replace(newarr);
+      },
       onLabelChange: this.pushUpdate.bind(this),
     };
 
