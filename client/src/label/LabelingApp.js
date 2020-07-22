@@ -42,6 +42,7 @@ class LabelingApp extends Component {
       // UI
       reassigning: { status: false, type: null },
       hotkeysPanel: false,
+      selectedAnnotationClass: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -84,12 +85,32 @@ class LabelingApp extends Component {
   }
 
   handleSelectionChange(figureId) {
+    console.log(this.props.figures);
     if (figureId) {
+      for (const annoClassId in this.props.figures) {
+        const annos = this.props.figures[annoClassId];
+        const filtered = annos.filter(o => {
+          return o.id === figureId;
+        });
+        if (filtered.length > 0) {
+          // console.log(annoClassId);
+          const annoClassName = this.props.labels.filter(o => {
+            return o.id === annoClassId;
+          });
+
+          if (annoClassName.length > 0) {
+            console.log(annoClassName[0]);
+            this.setState({ selectedAnnotationClass: annoClassName[0].name });
+          }
+          break;
+        }
+      }
       this.setState({ selectedFigureId: figureId });
     } else {
       this.setState({
         reassigning: { status: false, type: null },
         selectedFigureId: null,
+        selectedAnnotationClass: 'None selected',
       });
     }
   }
@@ -365,24 +386,45 @@ class LabelingApp extends Component {
       );
     }
 
-    const demoBar = this.props.demo ? (
+    // const demoBar = this.props.demo ? (
+    //   <div
+    //     style={{
+    //       width: '100%',
+    //       flex: '0 0 auto',
+    //       background: '#FFD700',
+    //       padding: '5px 10px',
+    //       fontWeight: 800,
+    //       textAlign: 'center',
+    //     }}
+    //   >
+    //     This is a demo page. The changes will not be saved and all network
+    //     responses are static.{' '}
+    //     <a target="_blank" href="https://github.com/Slava/label-tool">
+    //       GitHub repo
+    //     </a>
+    //   </div>
+    // ) : null;
+
+    // const nameOfSelectedAnnotation = this.props.labels.filter(o => {
+    //   return o.id === this.state.selectedFigureId;
+    // });
+
+    const nameOfSelectedAnnotation = this.state.selectedAnnotationClass;
+
+    const demoBar = (
       <div
         style={{
           width: '100%',
           flex: '0 0 auto',
-          background: '#FFD700',
+          background: '##9aedcd',
           padding: '5px 10px',
           fontWeight: 800,
           textAlign: 'center',
         }}
       >
-        This is a demo page. The changes will not be saved and all network
-        responses are static.{' '}
-        <a target="_blank" href="https://github.com/Slava/label-tool">
-          GitHub repo
-        </a>
+        {String(nameOfSelectedAnnotation)}
       </div>
-    ) : null;
+    );
 
     return (
       <div
