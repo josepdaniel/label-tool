@@ -19,6 +19,8 @@ const UPLOADS_PATH =
 
 const app = express();
 
+console.log('HELLOOOO');
+
 setup(app);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '10mb' }));
@@ -236,6 +238,11 @@ const uploads = multer({
           cb(null, name);
         } else {
           const id = images.addImageStub(projectId, filename, null);
+          const prefillData = req.query.prefilledLabelData;
+          if (prefillData) {
+            console.log('Prefill data found dummy');
+            images.updateLabel(id, JSON.parse(prefillData));
+          }
           const newName = images.updateLink(id, { projectId, filename });
           cb(null, newName);
         }

@@ -26,5 +26,5 @@ create table MLModels (
   type text not null
 );
 
-insert into projects (name, form) values ('Test Project', '{ "formParts": [ { "type": "polygon", "name": "Car", "id": "nfjxui" }, { "type": "bbox", "name": "Windows", "id": "n3ndi88" } ] }');
-insert into images (originalName, link, labeled, labelData, projectsId) values ('tesla.jpg', '/uploads/1/1.jpg', 0, '{ }', 1);
+-- insert into projects (name, form) values ('Test Project', '{ "formParts": [ { "type": "polygon", "name": "Car", "id": "nfjxui" }, { "type": "bbox", "name": "Windows", "id": "n3ndi88" } ] }');
+-- insert into images (originalName, link, labeled, labelData, projectsId) values ('tesla.jpg', '/uploads/1/1.jpg', 0, '{ }', 1);

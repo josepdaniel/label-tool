@@ -81,6 +81,8 @@ export default class LabelingLoader extends Component {
   }
 
   async pushUpdate(labelData) {
+    console.log('UPDATE PUSH YO');
+    console.log(labelData);
     const { imageId } = this.props.match.params;
     await this.fetch('/api/images/' + imageId, {
       method: 'PATCH',

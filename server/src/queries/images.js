@@ -58,6 +58,16 @@ values (?, ?, 'stub', 0, '{ }', ?);
     return lastInsertRowid;
   },
 
+  //   addImagePrepopulated: (projectId, filename, localPath) => {
+  //     const stmt = db.prepare(`
+  // insert into images(originalName, localPath, link, labeled, labelData, projectsId)
+  // values (?, ?, 'stub', 0, '{ }', ?);
+  // `);
+
+  //     const { lastInsertRowid } = stmt.run(filename, localPath, projectId);
+  //     return lastInsertRowid;
+  //   },
+
   updateLink: (imageId, { projectId, filename }) => {
     const ext = path.extname(filename);
     const link = `/uploads/${projectId}/${imageId}${ext}`;

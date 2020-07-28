@@ -85,7 +85,7 @@ class LabelingApp extends Component {
   }
 
   handleSelectionChange(figureId) {
-    console.log(this.props.figures);
+    // console.log(this.props.figures);
     if (figureId) {
       for (const annoClassId in this.props.figures) {
         const annos = this.props.figures[annoClassId];
@@ -99,7 +99,7 @@ class LabelingApp extends Component {
           });
 
           if (annoClassName.length > 0) {
-            console.log(annoClassName[0]);
+            // console.log(annoClassName[0]);
             this.setState({ selectedAnnotationClass: annoClassName[0].name });
           }
           break;
