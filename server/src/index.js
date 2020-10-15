@@ -240,7 +240,6 @@ const uploads = multer({
           const id = images.addImageStub(projectId, filename, null);
           const prefillData = req.query.prefilledLabelData;
           if (prefillData) {
-            console.log('Prefill data found dummy');
             images.updateLabel(id, JSON.parse(prefillData));
           }
           const newName = images.updateLink(id, { projectId, filename });
